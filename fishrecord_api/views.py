@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db import IntegrityError
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -19,14 +20,23 @@ class CreateRecord(APIView):
         image = request.data.get('image')
 
         #Create record object
-        Record.objects.create(
-            name=name, 
-            species=species, 
-            weight=weight,
-            length=length, 
-            longitude=longitude,
-            latitude=latitude,
-            image=image,
+        try:
+            Record.objects.create(
+                name=name, 
+                species=species, 
+                weight=weight,
+                length=length, 
+                longitude=longitude,
+                latitude=latitude,
+                image=image,
+                )
+        # In case some attributes are not provided, show error message
+        except (IntegrityError, ValueError) as e:
+            return Response(
+                {
+                    'status':'Error',
+                    'detail': str(e)
+                }
             )
         
         #Return response on record creation
@@ -34,7 +44,7 @@ class CreateRecord(APIView):
             {
                 'status':'Success',
                 'detail':'Record Created'
-            }, status = 200
+            }, status = 201
         )
 
 class GetRecord(APIView):
