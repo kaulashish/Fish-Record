@@ -13,6 +13,9 @@ class Record(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='images/', null=True, default=None)
 
+    class Meta:
+        ordering = ('-timestamp',)
+
     def __str__(self):
         return self.name
 
