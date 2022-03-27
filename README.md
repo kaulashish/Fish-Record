@@ -33,5 +33,5 @@ Creates the records based on parameters provided.
 
 2) GET `api/v1/records`
 
-Returns all the records as well as resized image download links
+Returns all the records as well as resized image links
 
