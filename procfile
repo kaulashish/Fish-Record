@@ -1,1 +1,0 @@
-web: gunicorn fish_record.wsgi --log-file -
