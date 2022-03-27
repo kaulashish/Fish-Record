@@ -15,7 +15,7 @@ import os, environ, dj_database_url
 
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False)
+    # DEBUG=(bool, False)
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,7 +31,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['localhost', '.herokuapp.com']
 
