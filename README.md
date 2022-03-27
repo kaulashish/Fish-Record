@@ -21,15 +21,15 @@ This url consists of 2 endpoints:
 
 Creates the records based on parameters provided.
 
-    #### Parameters: 
+#### Parameters: 
 
-    - name
-    - species
-    - weight
-    - length
-    - longitude
-    - latitude
-    - image
+- name
+- species
+- weight
+- length
+- longitude
+- latitude
+- image
 
 2) GET `api/v1/records`
 
