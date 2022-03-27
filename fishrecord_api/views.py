@@ -52,7 +52,7 @@ class GetRecord(APIView):
         #Query all Records
         records_obj = Record.objects.all()
         #Create a serializer object based on all records obtained
-        serializer_obj = RecordSerializer(records_obj, many=True)
+        serializer_obj = RecordSerializer(records_obj, many=True, context={'request': request})
         #Return a response consisting of all the records
         return Response(
             {
